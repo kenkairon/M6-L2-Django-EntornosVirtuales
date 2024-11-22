@@ -139,7 +139,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     python manage.py migrate
 
 16. Crear un superusuario
-
+    ```bash
     python manage.py createsuperuser
 
     Sugerencia de credenciales solo por Aprendizaje y test:
@@ -148,20 +148,20 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     Contraseña: admin1234
 
 17. Registrar el modelo en dia2/admin.py
-
+    ```bash
     from django.contrib import admin
     from .models import Producto
 
     admin.site.register(Producto)
 
 18. Ejecutar el servidor y verificar el panel de administración
-
+    ```bash
     python manage.py runserver
 
     URL: http://127.0.0.1:8000/admin
 
 19. Mejoras y configuración de plantillas Crear un archivo base de plantillas Ubicación: templates/base.html
-
+    ```bash
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -174,7 +174,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     </html>
 
 20. Modificar vistas en dia2/views.py
-
+    ```bash
     def index(request):
         return render(request, 'dia2/index.html')
 
@@ -183,7 +183,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         return render(request, 'dia2/productos.html', {'productos': productos})
 
 21. Configurar la carpeta de plantillas externas en leccion2/settings.py
-
+    ```bash
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -201,11 +201,11 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ]
 
 22. Integración de Bootstrap 5 Instalar Bootstrap 5
-
+    ```bash
     pip install django django-bootstrap-v5
 
 23. Configurar Bootstrap 5 en leccion2/settings.py
-
+    ```bash
     INSTALLED_APPS = [
         'django.contrib.admin',
         'django.contrib.auth',
@@ -218,7 +218,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ]
 
 24. Modificar las plantillas para usar Bootstrap
-
+    ```bash
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -235,49 +235,49 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     </html>
 
 25. Archivo: dia2/templates/dia2/productos.html
+    ```bash
+    {% extends 'base.html' %}
 
-{% extends 'base.html' %}
+    {% block title %}Productos{% endblock %}
 
-{% block title %}Productos{% endblock %}
-
-{% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Listado de Productos</h1>
-    <div class="table-responsive">
-        <table class="table table-striped border rounded-3 overflow-hidden">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for producto in productos %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ producto.nombre }}</td>
-                    <td>${{ producto.precio }}</td>
-                    <td>{{ producto.descripcion }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="4" class="text-center">No hay productos disponibles</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    {% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Listado de Productos</h1>
+        <div class="table-responsive">
+            <table class="table table-striped border rounded-3 overflow-hidden">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ producto.nombre }}</td>
+                        <td>${{ producto.precio }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No hay productos disponibles</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
 26. python manage.py runserver
+    ```bash
+    Accede a:
 
-Accede a:
-
-Página de inicio: http://127.0.0.1:8000/
-Panel de administración: http://127.0.0.1:8000/admin
+    Página de inicio: http://127.0.0.1:8000/
+    Panel de administración: http://127.0.0.1:8000/admin
 
 
 
