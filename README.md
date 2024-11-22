@@ -8,7 +8,6 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 - [Requisitos](#requisitos)
 - [Configuración del Entorno](#configuración-del-entorno)
 - [Pasos del Proyecto](#pasos-del-proyecto)
-  - [Configuración Inicial](#configuración-inicial)
   - [Configuración del Proyecto](#configuración-del-proyecto)
   - [Creación de Vistas y Modelos](#creación-de-vistas-y-modelos)
   - [Integración de Bootstrap 5](#integración-de-bootstrap-5)
