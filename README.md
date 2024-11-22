@@ -141,7 +141,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 16. Crear un superusuario
     ```bash
     python manage.py createsuperuser
-
+    ```bash
     Sugerencia de credenciales solo por Aprendizaje y test:
 
     Usuario: admin
@@ -272,7 +272,10 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     </div>
     {% endblock %}
 
-26. python manage.py runserver
+26. Activar el Servidor para verificar los resultados
+    ```bash
+    python manage.py runserver
+
     ```bash
     Accede a:
 
