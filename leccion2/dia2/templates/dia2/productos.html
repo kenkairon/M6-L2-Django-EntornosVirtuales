@@ -6,7 +6,7 @@
 <h1>Listado de Productos</h1>
 <ul>
     {% for producto in productos %}
-    <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
+    <li>{{ producto.nombre }} - ${{ producto.precio }} {{producto.descripcion}}</li>
     {% endfor %}
 </ul>
 {% endblock %}
