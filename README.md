@@ -277,3 +277,4 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 27. Comprobar en las Páginas las configuraciones estan OK
     Página de inicio: http://127.0.0.1:8000/
     Panel de administración: http://127.0.0.1:8000/admin
+    Panel de productos: http://127.0.0.1:8000/producto/
