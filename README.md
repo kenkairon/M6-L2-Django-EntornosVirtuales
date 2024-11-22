@@ -141,12 +141,8 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 16. Crear un superusuario
     ```bash
     python manage.py createsuperuser
-    ```bash
-    Sugerencia de credenciales solo por Aprendizaje y test:
 
-    Usuario: admin
-    Contraseña: admin1234
-
+    
 17. Registrar el modelo en dia2/admin.py
     ```bash
     from django.contrib import admin
@@ -217,7 +213,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         'bootstrap5',
     ]
 
-24. Modificar las plantillas para usar Bootstrap
+24. Modificar las plantillas para usar Bootstrap leccion2/templates/base.html
     ```bash
     <!DOCTYPE html>
     <html lang="en">
