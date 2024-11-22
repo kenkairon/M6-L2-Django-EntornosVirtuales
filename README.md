@@ -81,6 +81,218 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     'dia2',
     ]
 
+10. Ejecutar el servidor:
+    ```bash
+    python manage.py runserver
+
+11. Creación de Vistas y Modelos Crear vistas en dia2/views.py, index y productos
+    ```bash
+    from django.shortcuts import render
+    from .models import Producto
+
+    def index(request):
+        return render(request, 'index.html')
+
+    def productos(request):
+        productos = Producto.objects.all()
+        return render(request, 'productos.html', {'productos': productos})
+
+12. Crear la carpeta de plantillas en dia2/templates y agregar el archivo index.html:
+    ```bash
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index</title>
+    </head>
+    <body>
+        <h1>Hola Mundo</h1>
+    </body>
+    </html>
+
+13. Configurar rutas en leccion2/urls.py
+    ```bash
+    from django.contrib import admin
+    from django.urls import path
+    from dia2 import views
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', views.index, name='home'),
+    ]
+14. Crear un modelo en dia2/models.py:
+    ```bash
+     from django.db import models
+
+    class Producto(models.Model):
+        nombre = models.CharField(max_length=100)
+        precio = models.DecimalField(max_digits=10, decimal_places=2)
+        descripcion = models.TextField()
+
+        def __str__(self):
+            return self.nombre
+
+15. Aplicar las migraciones
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+
+16. Crear un superusuario
+
+    python manage.py createsuperuser
+
+    Sugerencia de credenciales solo por Aprendizaje y test:
+
+    Usuario: admin
+    Contraseña: admin1234
+
+17. Registrar el modelo en dia2/admin.py
+
+    from django.contrib import admin
+    from .models import Producto
+
+    admin.site.register(Producto)
+
+18. Ejecutar el servidor y verificar el panel de administración
+
+    python manage.py runserver
+
+    URL: http://127.0.0.1:8000/admin
+
+19. Mejoras y configuración de plantillas Crear un archivo base de plantillas Ubicación: templates/base.html
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+    </html>
+
+20. Modificar vistas en dia2/views.py
+
+    def index(request):
+        return render(request, 'dia2/index.html')
+
+    def productos(request):
+        productos = Producto.objects.all()
+        return render(request, 'dia2/productos.html', {'productos': productos})
+
+21. Configurar la carpeta de plantillas externas en leccion2/settings.py
+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [BASE_DIR / 'templates'],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
+
+22. Integración de Bootstrap 5 Instalar Bootstrap 5
+
+    pip install django django-bootstrap-v5
+
+23. Configurar Bootstrap 5 en leccion2/settings.py
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'dia2',
+        'bootstrap5',
+    ]
+
+24. Modificar las plantillas para usar Bootstrap
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        <title>Bootstrap Principal</title>
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+    </html>
+
+25. Archivo: dia2/templates/dia2/productos.html
+
+{% extends 'base.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Listado de Productos</h1>
+    <div class="table-responsive">
+        <table class="table table-striped border rounded-3 overflow-hidden">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ producto.nombre }}</td>
+                    <td>${{ producto.precio }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No hay productos disponibles</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+26. python manage.py runserver
+
+Accede a:
+
+Página de inicio: http://127.0.0.1:8000/
+Panel de administración: http://127.0.0.1:8000/admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
