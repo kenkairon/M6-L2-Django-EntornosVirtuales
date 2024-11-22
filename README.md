@@ -85,6 +85,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ```bash
     python manage.py runserver
 
+## Creación de Vista y Modelos
 11. Creación de Vistas y Modelos Crear vistas en dia2/views.py, index y productos
     ```bash
     from django.shortcuts import render
@@ -195,7 +196,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
             },
         },
     ]
-
+## Integración de Bootstrap5
 22. Integración de Bootstrap 5 Instalar Bootstrap 5
     ```bash
     pip install django django-bootstrap-v5
@@ -277,27 +278,3 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 
     Página de inicio: http://127.0.0.1:8000/
     Panel de administración: http://127.0.0.1:8000/admin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-   
