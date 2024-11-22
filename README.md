@@ -39,6 +39,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ```bash
     venv\Scripts\activate
 
+## Configuración Inicial
 ## Instalar Django y Guardar dependencias
 
 3. Intalación Django
