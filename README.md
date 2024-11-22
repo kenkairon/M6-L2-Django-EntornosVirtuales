@@ -63,6 +63,28 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ```bash
     python manage.py startapp dia2
 
+8. Generar las migraciones iniciales
+     ```bash
+    python manage.py migrate
+
+## Configuración del Proyecto
+
+9. Conectar el proyecto con la aplicación: Agregar 'dia2' en la lista INSTALLED_APPS dentro del archivo leccion2/settings.py:
+    ```bash
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'dia2',
+    ]
+
+
+
+
+
 
 
     
