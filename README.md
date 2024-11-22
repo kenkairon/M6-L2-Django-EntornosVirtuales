@@ -31,23 +31,22 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
    ```bash
    python -m venv venv
 
-venv\Scripts\activate
+
 
 2. Activar el entorno virtual:
-    
+    ```bash
     venv\Scripts\activate
 
-3. Instalar Django
 
+3. Instalar Django
+    ```bash
     pip install django
 
 4. Guardar las dependencias
-
+    ```bash
     pip freeze > requirements.txt
 
-1. Crear el proyecto:
 
-    django-admin startproject leccion2
 
 
 
