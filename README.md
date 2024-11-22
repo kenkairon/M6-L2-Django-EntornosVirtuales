@@ -33,9 +33,38 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 
 
 ## Activación del Entorno
+
 2. Activar el entorno virtual:
     ### Windows
     ```bash
     venv\Scripts\activate
+
+## Instalar Django y Guardar dependencias
+
+3. Intalación Django
+    ```bash
+    pip install django
+
+## Guardar las dependencias
+4. Instalación dependencias
+    ```bash
+    pip freeze > requirements.txt
+
+## Pasos del Proyecto
+5. Crear el Proyecto
+    ```bash
+    django-admin startproject leccion2
+
+6. Ingresar al directorio del Proyecto
+    ```bash
+    cd leccion2
+
+7. Creamos la Aplicación
+    ```bash
+    python manage.py startapp dia2
+
+
+
+    
 
    
