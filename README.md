@@ -8,3 +8,10 @@ Este proyecto guía paso a paso cómo crear una aplicación Django que utiliza B
 ```bash
 python -m venv venv
 source venv/Scripts/activate  # En Windows
+
+
+### 2. Instalar Django y guardar dependencias
+
+pip install django
+pip freeze > requirements.txt
+
