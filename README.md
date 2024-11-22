@@ -34,10 +34,8 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 
 ## Activación del Entorno
 2. Activar el entorno virtual:
-    # Windows
+    ### Windows
     ```bash
     venv\Scripts\activate
 
-    # Mac/Linux 
-    ```bash
-    source venv/bin/activate
+   
