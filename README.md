@@ -32,26 +32,12 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
    python -m venv venv
 
 
-
+## Activación del Entorno
 2. Activar el entorno virtual:
+    # Windows
     ```bash
     venv\Scripts\activate
 
-
-3. Instalar Django
+    # Mac/Linux 
     ```bash
-    pip install django
-
-4. Guardar las dependencias
-    ```bash
-    pip freeze > requirements.txt
-
-
-
-
-
-
-
-
-
-
+    source venv/bin/activate
