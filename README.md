@@ -274,5 +274,6 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     ```bash
     python manage.py runserver
 
+27. Comprobar en las Páginas las configuraciones estan OK
     Página de inicio: http://127.0.0.1:8000/
     Panel de administración: http://127.0.0.1:8000/admin
