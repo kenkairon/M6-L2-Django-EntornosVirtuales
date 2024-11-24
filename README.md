@@ -7,13 +7,13 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
 ## Tabla de Contenidos
 - [Requisitos](#requisitos)
 - [Configuración del Entorno](#configuración-del-entorno)
+- [Instalar Django y Guardar dependencias](#instalar-Django-y-Guardar-dependencias)
 - [Pasos del Proyecto](#pasos-del-proyecto)
   - [Configuración Inicial](#configuración-inicial)
   - [Configuración del Proyecto](#configuración-del-proyecto)
   - [Creación de Vistas y Modelos](#creación-de-vistas-y-modelos)
   - [Integración de Bootstrap 5](#integración-de-bootstrap-5)
-- [Credenciales Sugeridas](#credenciales-sugeridas)
-- [Licencia](#licencia)
+
 
 ---
 
@@ -135,30 +135,38 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         def __str__(self):
             return self.nombre
 
-15. Aplicar las migraciones
+15. Crear migraciones
     ```bash
     python manage.py makemigrations
+   
+16. Aplicar migraciones
+    ```bash
     python manage.py migrate
 
-16. Crear un superusuario
+17. Crear un superusuario
     ```bash
     python manage.py createsuperuser
 
-    
-17. Registrar el modelo en dia2/admin.py
+18. Verificamos usuario y contraseña del superuser por motivos de aprendizaje le vamos a dar estos parametros pero que no son seguros
+    ```bash
+    admin
+    admin@gmail.com
+    admin1234
+    y
+
+19. Registrar el modelo en dia2/admin.py
     ```bash
     from django.contrib import admin
     from .models import Producto
 
     admin.site.register(Producto)
 
-18. Ejecutar el servidor y verificar el panel de administración
-    ```bash
+21. Active el servidor 
     python manage.py runserver
 
-    URL: http://127.0.0.1:8000/admin
+20. Verifique la vista administrador y sus user y contraseña  http://127.0.0.1:8000/admin
 
-19. Mejoras y configuración de plantillas Crear un archivo base de plantillas Ubicación: templates/base.html
+21. Mejoras y configuración de plantillas Crear un archivo base de plantillas Ubicación: templates/base.html
     ```bash
     <!DOCTYPE html>
     <html lang="en">
@@ -170,8 +178,34 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         {% endblock %}
     </body>
     </html>
+22. Crear rutas en dia2/urls.py
 
-20. Modificar vistas en dia2/views.py
+    ```bash
+    from django.urls import path
+    from dia2 import views
+
+    urlpatterns = [
+        path('', views.index, name='home'),
+        path('producto/', views.productos, name='productos'),
+    ]
+
+23. Crear productos.html en templates/dia2
+
+    ```bash
+    {% extends 'base.html' %}
+
+    {% block title %}Productos{% endblock %}
+
+    {% block content %}
+    <h1>Listado de Productos</h1>
+    <ul>
+        {% for producto in productos %}
+            <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+
+24. Modificar vistas en dia2/views.py
     ```bash
     def index(request):
         return render(request, 'dia2/index.html')
@@ -180,7 +214,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         productos = Producto.objects.all()
         return render(request, 'dia2/productos.html', {'productos': productos})
 
-21. Configurar la carpeta de plantillas externas en leccion2/settings.py
+25. Configurar la carpeta de plantillas externas en leccion2/settings.py
     ```bash
     TEMPLATES = [
         {
@@ -198,11 +232,11 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         },
     ]
 ## Integración de Bootstrap5
-22. Integración de Bootstrap 5 Instalar Bootstrap 5
+26. Integración de Bootstrap 5 Instalar Bootstrap 5
     ```bash
     pip install django django-bootstrap-v5
 
-23. Configurar Bootstrap 5 en leccion2/settings.py
+27. Configurar Bootstrap 5 en leccion2/settings.py
     ```bash
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -215,7 +249,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         'bootstrap5',
     ]
 
-24. Modificar las plantillas para usar Bootstrap leccion2/templates/base.html
+28. Modificar las plantillas para usar Bootstrap leccion2/templates/base.html
     ```bash
     <!DOCTYPE html>
     <html lang="en">
@@ -232,7 +266,7 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
     </body>
     </html>
 
-25. Archivo: dia2/templates/dia2/productos.html
+29. Archivo: dia2/templates/dia2/productos.html
     ```bash
     {% extends 'base.html' %}
 
@@ -269,12 +303,11 @@ Este proyecto proporciona una guía paso a paso para crear una aplicación Djang
         </div>
     </div>
     {% endblock %}
-
-26. Activar el Servidor para verificar los resultados
+30. Activar el Servidor para verificar los resultados
     ```bash
     python manage.py runserver
 
-27. Comprobar en las Páginas las configuraciones estan OK
+31. Comprobar en las Páginas las configuraciones estan OK
     Página de inicio: http://127.0.0.1:8000/
     Panel de administración: http://127.0.0.1:8000/admin
     Panel de productos: http://127.0.0.1:8000/producto/
